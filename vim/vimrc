@@ -83,6 +83,8 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 noremap <Left> <NOP>
 noremap <Right> <NOP>
+noremap <leader>h gT
+noremap <leader>l gt
 
 nnoremap <silent> <leader>p :FZF<cr>
 nnoremap <silent> <leader>P :FZF ~<cr>
