@@ -10,6 +10,7 @@ if filereadable("/etc/vim/vimrc.local")
 endif
 
 set number relativenumber
+set noswapfile
 
 " Tab Spacing
 set expandtab
@@ -17,22 +18,54 @@ set tabstop=2
 set softtabstop=2
 set shiftwidth=2
 
+command Q q
+command W w
+
+" Hotkeys
+let mapleader="\<Space>"
+imap jj <esc>
+nmap j gj
+nmap k gk
+nmap <C-a> gg<S-v><S-g>
+
+noremap <Up> <NOP>
+noremap <Down> <NOP>
+noremap <Left> <NOP>
+noremap <Right> <NOP>
+
+nnoremap <silent> <leader>p :FZF<CR>
+nnoremap <silent> <leader>P :FZF ~<CR>
+
+nnoremap <leader>f :CtrlSF<space>
+nmap <leader>F <Plug>CtrlSFCwordPath<CR>
+vmap <leader>F <Plug>CtrlSFVwordExec
+
+nnoremap <leader>R :call RunCurrentSpecFile()<CR>
+nnoremap <leader>r :call RunNearestSpec()<CR>
+
+nnoremap <leader>g :Git blame<CR>
+nnoremap <leader>o i<CR><esc>
+nnoremap <leader>tn :tabnew<space>
+
 " vim-plugin
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+
 Plug 'tpope/vim-rails'
 Plug 'tpope/vim-surround'
 Plug 'itchyny/lightline.vim'
 Plug 'tpope/vim-fugitive'
+
 Plug 'terryma/vim-multiple-cursors'
-Plug 'preservim/nerdtree'
+
 Plug 'editorconfig/editorconfig-vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'frazrepo/vim-rainbow'
-Plug 'preservim/nerdcommenter'
 
-Plug 'mileszs/ack.vim'
+Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-dispatch'
+
 Plug 'rking/ag.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'thoughtbot/vim-rspec'
@@ -64,6 +97,11 @@ filetype plugin on
 let g:NERDSpaceDelims = 1
 let g:NERDDefaultAlign = 'left'
 
+" CTRL P
+let g:ctrlp_user_command = 'ag %s -l --hidden --nocolor -g ""'
+let g:ctrlp_use_caching = 0
+let g:ctrlp_switch_buffer = 0
+
 " Silver surfer ag
 if executable('ag')
   let g:ackprg = 'ag --path-to-ignore ~/.ignore --vimgrep'
@@ -72,26 +110,11 @@ end
 " AG vim
 let g:ag_prg = 'ag --path-to-ignore ~/.ignore --vimgrep'
 let g:ctrlsf_ackprg = 'ag'
-let g:ctrlsf_extra_backend_args = { 'ag': '--path-to-ignore ~/.ignore' }
-
+" let g:ctrlsf_extra_backend_args = { 'ag': '--path-to-ignore ~/.ignore' }
 let g:rspec_command = '!bin/rspec {spec}'
+
 " vim gitgutter
 set updatetime=100
 
-" Hotkeys
-noremap <Up> <NOP>
-noremap <Down> <NOP>
-noremap <Left> <NOP>
-noremap <Right> <NOP>
-noremap <leader>h gT
-noremap <leader>l gt
-
-nnoremap <silent> <leader>p :FZF<cr>
-nnoremap <silent> <leader>P :FZF ~<cr>
-nnoremap <silent> <leader>b :NERDTree<cr>
-nnoremap <silent> <leader>B :NERDTreeClose<cr>
-nnoremap <leader>f :CtrlSF<space>
-nnoremap <leader>F :CtrlSFOpen<cr>
-nnoremap <leader>R :call RunCurrentSpecFile()<cr>
-nnoremap <leader>r :call RunNearestSpec()<cr>
-nnoremap <leader>g :Git blame<cr>
+" RSPEC
+" let g:rspec_command = 'Dispatch rspec {spec}'
