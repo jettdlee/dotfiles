@@ -1,0 +1,1 @@
+bin/rails db:drop && bin/rails db:create && bin/rails db:migrate && bin/rails db:migrate RAILS_ENV=test &&  bin/rails db:seed && bin/rails import_EUR_historical_conversions && bin/rails import_USD_historical_conversions && bin/rails import_conversion_rates && bin/rails populate_extra_data
