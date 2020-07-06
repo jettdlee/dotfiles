@@ -40,6 +40,8 @@ nnoremap <leader>f :CtrlSF<space>
 nmap <leader>F <Plug>CtrlSFCwordPath<CR>
 vmap <leader>F <Plug>CtrlSFVwordExec
 
+nmap <leader>V viwpyiw
+vmap <leader>V pyiw
 nnoremap <leader>R :call RunCurrentSpecFile()<CR>
 nnoremap <leader>r :call RunNearestSpec()<CR>
 
