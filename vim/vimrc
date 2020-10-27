@@ -121,3 +121,8 @@ set updatetime=100
 
 " RSPEC
 " let g:rspec_command = 'Dispatch rspec {spec}'
+"
+
+" AUTOCOMPLETE
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
