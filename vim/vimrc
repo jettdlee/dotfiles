@@ -23,10 +23,12 @@ command W w
 
 " Hotkeys
 let mapleader="\<Space>"
+map Q <Nop>
 imap jj <esc>
 nmap j gj
 nmap k gk
 nmap <C-a> gg<S-v><S-g>
+nmap 0 ^
 
 noremap <Up> <NOP>
 noremap <Down> <NOP>
@@ -47,7 +49,7 @@ nnoremap <leader>r :call RunNearestSpec()<CR>
 
 nnoremap <leader>g :Git blame<CR>
 nnoremap <leader>o i<CR><esc>
-nnoremap <leader>tn :tabnew<space>
+nnoremap <leader>tn :tabnew .<space>
 
 " vim-plugin
 call plug#begin('~/.vim/plugged')
