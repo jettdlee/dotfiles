@@ -13,6 +13,8 @@
 /.vscode/*
 /coverage
 /public
+/public/*
+*.js.map
 
 /uploads
 /spec/support/capybara.rb
