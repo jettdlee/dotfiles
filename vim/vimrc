@@ -51,6 +51,12 @@ nnoremap <leader>g :Git blame<CR>
 nnoremap <leader>o i<CR><esc>
 nnoremap <leader>tn :tabnew .<space>
 
+"nerdTree
+nnoremap <leader>n :NERDTreeFocus<CR>
+nnoremap <C-n> :NERDTree<CR>
+nnoremap <C-t> :NERDTreeiToggle<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
+
 " vim-plugin
 call plug#begin('~/.vim/plugged')
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -73,6 +79,7 @@ Plug 'tpope/vim-commentary'
 Plug 'rking/ag.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'thoughtbot/vim-rspec'
+Plug 'preservim/nerdtree'
 call plug#end()
 
 " Lightline
@@ -128,3 +135,8 @@ set updatetime=100
 " AUTOCOMPLETE
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+
+" NerdTree
+autocmd VimEnter * NERDTree | wincmd p
+autocmd BufWinEnter * if getcmdwintype() == "" | silent NERDTreeMirror | endif
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
