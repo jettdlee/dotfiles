@@ -142,5 +142,5 @@ set omnifunc=syntaxcomplete#Complete
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 
 " Disable the damn bell noise when using WSL
-et visualbell
+set visualbell
 set t_vb=
