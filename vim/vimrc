@@ -140,3 +140,7 @@ set omnifunc=syntaxcomplete#Complete
 " autocmd VimEnter * NERDTree | wincmd p
 " autocmd BufWinEnter * if getcmdwintype() == "" | silent NERDTreeMirror | endif
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+" Disable the damn bell noise when using WSL
+et visualbell
+set t_vb=
