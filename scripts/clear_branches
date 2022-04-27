@@ -1,1 +1,2 @@
+#!/usr/bin/env
 git prune && git branch --merged master --no-color | grep -v master | grep -v pre-production | grep -v production | grep -v staging | xargs git branch -d

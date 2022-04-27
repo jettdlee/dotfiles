@@ -44,8 +44,10 @@ vmap <leader>F <Plug>CtrlSFVwordExec
 
 nmap <leader>V viwpyiw
 vmap <leader>V pyiw
-nnoremap <leader>R :call RunCurrentSpecFile()<CR>
-nnoremap <leader>r :call RunNearestSpec()<CR>
+nmap <silent> <leader>R :TestFile<CR>
+nmap <silent> <leader>r :TestNearest<CR>
+" nnoremap <leader>R :call RunCurrentSpecFile()<CR>
+" nnoremap <leader>r :call RunNearestSpec()<CR>
 
 nnoremap <leader>g :Git blame<CR>
 nnoremap <leader>o i<CR><esc>
@@ -80,6 +82,7 @@ Plug 'rking/ag.vim'
 Plug 'dyng/ctrlsf.vim'
 Plug 'thoughtbot/vim-rspec'
 Plug 'preservim/nerdtree'
+Plug 'vim-test/vim-test'
 call plug#end()
 
 " Lightline
@@ -157,3 +160,7 @@ if &term =~ '^xterm'
   " 5 -> blinking vertical bar
   " 6 -> solid vertical bar
 endif
+
+"VIM TEST
+let test#ruby#use_binstubs = 0
+let test#ruby#bundle_exec = 0
