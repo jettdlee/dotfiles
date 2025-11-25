@@ -61,7 +61,7 @@ nnoremap <leader>tn :tabnew .<space>
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
-" nnoremap <C-f> :NERDTreeFind<CR>
+nnoremap <C-f> :NERDTreeFind<CR>
 
 " vim-plugin
 " Install vim-plug
