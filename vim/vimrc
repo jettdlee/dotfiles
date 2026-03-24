@@ -50,6 +50,7 @@ nmap <leader>V viwpyiw
 vmap <leader>V pyiw
 nmap <silent> <leader>R :TestFile<CR>
 nmap <silent> <leader>r :TestNearest<CR>
+nmap <silent> <leader>y :TestVisit<CR>
 " nnoremap <leader>R :call RunCurrentSpecFile()<CR>
 " nnoremap <leader>r :call RunNearestSpec()<CR>
 
@@ -62,6 +63,8 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+nmap <silent> <leader>m :RuboCop -a<CR>
 
 " vim-plugin
 " Install vim-plug
@@ -98,6 +101,7 @@ Plug 'preservim/nerdtree'
 Plug 'vim-test/vim-test'
 Plug 'kule/vim-standardrb'
 Plug 'jremmen/vim-ripgrep'
+Plug 'ngmy/vim-rubocop'
 call plug#end()
 
 " Lightline
@@ -136,28 +140,30 @@ if executable('rg')
   let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 endif
 
-
 " Silver surfer ag
 " if executable('ag')
 "   let g:ackprg = 'ag --path-to-ignore ~/.ignore --vimgrep'
 " end
-
-
 
 " AG vim
 " let g:ag_prg = 'ag --path-to-ignore ~/.ignore --vimgrep'
 let g:ctrlsf_ackprg = 'rg'
 " let g:ctrlsf_extra_backend_args = { 'ag': '--path-to-ignore ~/.ignore' }
 
-let g:rspec_command = '!bin/rspec {spec}'
-let test#ruby#rspec#executable = 'bundle exec rspec'
-
 " vim gitgutter
 set updatetime=100
 
 " RSPEC
 " let g:rspec_command = 'Dispatch rspec {spec}'
-"
+let g:rspec_command = '!bin/rspec {spec}'
+" let test#ruby#rspec#executable = 'bundle exec rspec'
+
+" Runs test on app container
+let test#ruby#rspec#executable = 'docker-compose exec -e RAILS_ENV=test app rspec'
+
+"VIM TEST
+let test#ruby#use_binstubs = 0
+let test#ruby#bundle_exec = 0
 
 " AUTOCOMPLETE
 filetype plugin on
@@ -185,6 +191,5 @@ if &term =~ '^xterm'
   " 6 -> solid vertical bar
 endif
 
-"VIM TEST
-let test#ruby#use_binstubs = 0
-let test#ruby#bundle_exec = 0
+" vim-rubocop
+let g:vimrubocop_keymap = 0
